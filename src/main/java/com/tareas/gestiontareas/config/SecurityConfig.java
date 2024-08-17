@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.config.Customizer;
 
 @EnableWebSecurity
 public class SecurityConfig {
@@ -14,7 +15,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .anyRequest().authenticated()
                 )
-                .httpBasic(); // Para autenticación básica
+                .httpBasic(Customizer.withDefaults()); // Nueva forma de configurar httpBasic
 
         return http.build();
     }
