@@ -33,6 +33,19 @@ public class TareaService {
         return null;
     }
 
+    public List<Tarea> listarTareasPorEstado(Tarea.Estado estado) {
+        return tareaRepository.findByEstado(estado);
+    }
+
+    public List<Tarea> listarTareasPorCategoria(String categoriaNombre) {
+        return tareaRepository.findByCategoriaNombre(categoriaNombre);
+    }
+
+    public List<Tarea> listarTareasOrdenadasPorFecha() {
+        return tareaRepository.findAllByOrderByFechaVencimientoAsc();
+    }
+
+
     public boolean eliminarTarea(Long id) {
         if (tareaRepository.existsById(id)) {
             tareaRepository.deleteById(id);

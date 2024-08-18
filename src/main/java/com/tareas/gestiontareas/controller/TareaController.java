@@ -31,6 +31,22 @@ public class TareaController {
         return tarea != null ? ResponseEntity.ok(tarea) : ResponseEntity.notFound().build();
     }
 
+    @GetMapping("/estado/{estado}")
+    public List<Tarea> listarTareasPorEstado(@PathVariable Tarea.Estado estado) {
+        return tareaService.listarTareasPorEstado(estado);
+    }
+
+    @GetMapping("/categoria/{categoriaNombre}")
+    public List<Tarea> listarTareasPorCategoria(@PathVariable String categoriaNombre) {
+        return tareaService.listarTareasPorCategoria(categoriaNombre);
+    }
+
+    @GetMapping("/ordenar/fecha")
+    public List<Tarea> listarTareasOrdenadasPorFecha() {
+        return tareaService.listarTareasOrdenadasPorFecha();
+    }
+
+
     @PutMapping("/{id}")
     public ResponseEntity<Tarea> actualizarTarea(@PathVariable Long id, @RequestBody Tarea tarea) {
         Tarea tareaActualizada = tareaService.actualizarTarea(id, tarea);

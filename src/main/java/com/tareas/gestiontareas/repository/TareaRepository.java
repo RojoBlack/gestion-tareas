@@ -12,4 +12,7 @@ public interface TareaRepository extends JpaRepository<Tarea, Long> {
     List<Tarea> findByEstado(Tarea.Estado estado);
 
     List<Tarea> findByCategoriaNombre(String nombreCategoria);
+
+    List<Tarea> findAllByOrderByFechaVencimientoAsc();
+
 }
